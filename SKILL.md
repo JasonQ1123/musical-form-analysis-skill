@@ -1,11 +1,15 @@
 ---
 name: musical-form-analysis
-description: Analyze musical form, section boundaries, thematic returns, and competing readings from available score, audio, MIDI, or cited evidence. Use for binary/ternary distinctions, rondo, variations, sonata, and related form questions; 中文：分析曲式、划分段落、单二还是单三、单三还是复三、是不是奏鸣曲式。
+description: Analyze musical form, section boundaries, thematic returns, competing readings, key/mode changes, and cadences from available score, audio, MIDI, or cited evidence, with Chinese or English output. Use for binary/ternary distinctions, rondo, variations, sonata, and related form questions; 中文：分析曲式、划分段落、单二还是单三、单三还是复三、是不是奏鸣曲式、调式转变小节与终止式简图。
 ---
 
 # Musical Form Analysis
 
+English | [简体中文](SKILL.zh-CN.md)
+
 Analyze form from checkable observations of themes, tonal movement, cadences, and formal function. Distinguish observation from interpretation; do not turn one plausible reading into a rule for every piece.
+
+Produce a fully localized Chinese or English analysis in the language explicitly requested; otherwise match the user's language. Localize the chart/table headings, key and mode names, cadence types, legends, notes, and final reply together. Keep evidence tags and musical symbols unchanged. Provide both languages together only when requested; the exact label mappings are in the compact-format reference.
 
 ## Scope and input
 
@@ -71,13 +75,15 @@ Check harmonic motion, bass and melodic arrival, phrase function, and rhythmic/m
 
 Name the local key and whether it is established or merely tonicized. A cadence in the dominant key can close a local theme while leaving the larger form tonally open. Specify the level meant by “open” or “closed.” An evasion weakens a closure claim but does not by itself forbid a thematic or formal boundary.
 
+Track key/mode changes with their supported bar/beat of entry and destination, including returns to the home key. Distinguish modulation, a change of mode, tonicization, and a phrase ending on the dominant. A contrasting section, a new accidental, or a half cadence alone does not establish a new key. If a change is gradual or its exact onset cannot be established, give a supported span rather than an invented bar. When the inspected evidence supports no change, say so explicitly; when coverage is incomplete, keep the unchecked span unresolved.
+
 Where the harmony can be established, record the **cadential formula** alongside the type: K46–D–T, D–T, S–D, K46–D, or a suitable Roman-numeral equivalent such as V7–I. Here K46 means cadential 6/4 and T/S/D name tonic/subdominant/dominant functions. Identify the local key and actual chords/inversions where supported; a function symbol alone is not a key or a complete chord specification. The formula exposes the harmonic interpretation for checking, but does not by itself establish a cadence or distinguish PAC from IAC: melodic arrival, inversion, and phrase function also matter.
 
 Track uncertainty separately for the key, formula, cadence type, and closure. If the harmony is unreadable or unsupported, write **unknown / not verified** rather than supplying a likely formula to fill the row. Give an inferred formula only when specific observations support it, with its uncertainty. Any cadence or closure judgment that depends on unresolved harmony must remain provisional or undetermined; independently supported observations can still be reported.
 
 For example, if the only readable features at a candidate boundary are a rest and a repeat sign, those features may be tagged [score]. The key, formula, cadence type, and tonal closure remain undetermined. The signs do not establish K46–D–T, PAC, or a home-tonic close.
 
-When evidence supports a table, keep location, local key, harmonic formula, melodic/bass support, cadence/arrival type, closure level, formal role, and evidence distinguishable. Use columns or concise row notes as appropriate. Mark uncertain fields and gaps rather than filling every row.
+When evidence supports a table, keep location, local key, harmonic formula, melodic/bass support, cadence/arrival type, closure level, formal role, and evidence distinguishable. Use the compact columns specified below; put supporting arrival notes and any closure-level distinction in brief notes rather than adding a wide column for every analytical field. Mark uncertain fields and gaps rather than filling every row.
 
 ### 3. Track material and structural levels
 
@@ -122,20 +128,22 @@ If a user's textbook calls an ABC design “ternary without reprise / 并列单�
 
 ### 6. Present the result
 
-Scale the output to the evidence and the user's question:
+Use the fixed compact study-sheet format in [Compact analysis format](references/compact-analysis-format.md); read it when preparing the deliverable. Keep the language requested by the user. Its layout and notation are defaults for this skill; its example symbols are not findings about a new piece.
 
-- **Source and limits:** what was inspected, what numbering is used, and what remains uncertain.
-- **Cadence/boundary table:** only supported locations; give the harmonic formula where supported, otherwise mark it unknown. Separate the evidence and certainty of the formula, cadence type, and closure; distinguish observed arrivals, interpretation, and non-cadential joins.
-- **Diagram:** main sections and relevant internal designs, with locators and evidence. Distinguish written spans from playback order. Add bar counts only when meaningful; shared/elided bars count once in the total.
-- **Conclusion:** form label and analytical convention, decisive evidence, and confidence. Explain the strongest plausible alternative when it helps resolve the question. Reject it only if the evidence warrants rejection; otherwise retain it as a viable reading and identify what would decide.
+- **Lead:** one-sentence form conclusion and a short key/mode summary. List each verified change as `m. N (beat, if needed) → new key / mode`, including a later return; otherwise explicitly state no confirmed change or identify the unresolved span. Use the corresponding Chinese wording for Chinese output.
+- **Chart:** formal-section brackets above phrase columns, followed by the fixed rows `Phrase → Core bars → Bar count → Key / mode → Cadential arrival → Cadential formula → Cadence type`, or their mapped Chinese labels. Use the actual hierarchy, number of phrases, and lengths; do not force A–B–A′ or 4+4.
+- **Matching table:** `Section / phrase | Core bars | Length | Key / mode | Cadential arrival | Cadential formula and type`, or the mapped Chinese columns. Prefer short supported notation such as `D⁷—T, PAC` / `D⁷—T，完满全终止` or `T—D⁷, HC` / `T—D⁷，半终止`. Expand English abbreviations in a short legend. Preserve inversions and keep formula, cadence type, and key uncertainties explicit.
+- **Brief notes:** source and evidence tags; numbering, pickups, repeat navigation and shared bars; the bass/melodic arrivals needed to check cadence labels; and any material limitation or consequential competing reading. Do not turn the compact summary into a full harmonic essay unless requested.
+- **Files:** for an adequately supported score analysis, render the chart as a PNG when tools permit and save a matching concise Markdown report. Put generated analysis files outside the source/project directory unless the user explicitly chooses another destination. Show the PNG inline and link to the saved file after checking it opens. If rendering is unavailable, give the same layout as a text/table without claiming an image was produced.
 
-Without adequate evidence, give the limited result and describe the passage or observation needed next. Do not supply fictional bars to complete the template.
+Without adequate bar-level evidence, omit unsupported chart/table fields or give a limited textual result. The fixed format never requires invented bars, changes of key, or complete-looking cadence rows.
 
 ## Final checks
 
 - Do all factual details have traceable score/audio/MIDI, literature, or reported support?
 - Are cadence, pause, thematic entry, and formal boundary distinguished?
 - Are local tonal closure and home-tonic closure distinguished?
+- Are verified key/mode changes tied to their bar/beat and destination, including returns, without mistaking tonicization or a half cadence for modulation?
 - Are repeat navigation, pickup, within-bar starts, overlaps, and counting conventions accounted for?
 - Does the form label match the hierarchy, thematic/tonal trajectory, and diagram?
 - Were any duration threshold, repeat sign, or closed middle used as a verdict by itself?
@@ -143,9 +151,13 @@ Without adequate evidence, give the limited result and describe the passage or o
 - Are formula, cadence type, and closure supported separately, with uncertainty carried into dependent judgments rather than hidden by an [inferred] tag?
 - If image processing was needed, was musical identity checked from notation rather than pixel matching alone?
 - Does the conclusion preserve unresolved evidence and plausible alternatives?
+- Do the chart and table agree in the fixed compact layout, with clear arrival locations and short, supported cadence formulas?
+- Are headings, key/mode names, cadence labels, legends, and notes all in the requested output language rather than only translating the document title?
+- Are generated analysis artifacts outside the project unless another destination was requested, and are delivered PNGs openable and linked?
 
 ## References and examples
 
+- [Compact analysis format](references/compact-analysis-format.md): required default presentation for the chart, key/mode changes, cadence notation, numbering notes, and external artifact delivery. Read when preparing an analysis result.
 - [Synthetic decision cases](examples/decision-cases.md): consult for contrasts involving da capo, internal hierarchy, balanced/rounded binary, material versus function, uncertain cadence fields, and scan comparisons. These test reasoning from supplied facts, not score-reading or image-processing accuracy.
 - [Mendelssohn evidence audit](examples/mendelssohn-op72-no2.md): consult when an earlier analysis or title-only prompt offers unverified precise claims. This is not a worked score analysis or an answer key for Op. 72 No. 2.
 

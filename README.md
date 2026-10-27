@@ -1,5 +1,7 @@
 # Musical Form Analysis — an Agent Skill
 
+English | [简体中文](README.zh-CN.md)
+
 A portable skill for evidence-based musical form analysis: relate thematic and tonal organization, cadences, and formal function to a checkable diagram, while preserving uncertainty where the sources do not decide.
 
 The entrypoint is SKILL.md with YAML name and description fields. It is plain Markdown and can be used by compatible skill loaders. Score reading, listening, MIDI parsing, and source retrieval depend on the host's available tools; this repository does not implement them.
@@ -52,14 +54,19 @@ Ask naturally in English or Chinese:
 
 The agent establishes its sources and coordinates, examines themes, tonal movement, cadences, and hierarchy, then gives the supported diagram and conclusion. A bar-level table is included only when bar-level evidence exists. Title-only input does not justify invented segmentation.
 
+For score-based results, the default is a compact study sheet: section brackets over phrase columns, followed by phrase labels, bar spans, lengths, key/mode, cadential arrival, formula, and type. Verified key/mode changes are tied to their bar/beat and destination; no change and unresolved passages are stated explicitly. Cadences use short supported forms such as `D⁷—T, PAC` (perfect authentic cadence), with brief evidence notes. When rendering is available, the PNG chart and matching concise Markdown report are saved outside the source/project directory unless another destination is requested. The [fixed compact format](references/compact-analysis-format.md) specifies the layout and notation; it does not prescribe a piece's form, keys, or phrase lengths.
+
+The analysis can be delivered entirely in Chinese or English. Request the language explicitly, or let it follow your message. Chart/table labels, key and mode names, cadence types, legends, notes, and the final reply change together; musical symbols and evidence tags stay the same. The fixed-format guide is available in [English](references/compact-analysis-format.md) and [简体中文](references/compact-analysis-format.zh-CN.md).
+
 ## What is inside
 
-[SKILL.md](SKILL.md) contains:
+[SKILL.md](SKILL.md) ([简体中文](SKILL.zh-CN.md)) contains:
 
 - input handling for score, audio, MIDI, descriptions, and title-only questions;
 - evidence tags for inspected notation, recordings, MIDI events, literature, reported observations, and inference;
 - context-sensitive boundary and return criteria without universal length thresholds;
 - cadential formulas (K46–D–T, D–T, S–D, or Roman-numeral equivalents) where supported, with separate uncertainty for harmony, cadence type, and closure;
+- bar/beat-specific key and mode changes, distinguished from tonicization and half cadences, plus a fixed compact chart/table format for keys and cadences;
 - separate labels for material identity and formal function: an a-derived passage can serve as a transition without becoming a new theme or a structural reprise;
 - conditional score-image correction when readability requires it, with musical identity checked from notation rather than pixel similarity alone;
 - a workflow covering coordinates, cadences, thematic/tonal organization, structural levels, classification, and output;
