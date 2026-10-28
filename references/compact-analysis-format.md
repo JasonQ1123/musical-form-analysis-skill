@@ -112,7 +112,7 @@ Below the chart/table, state the details needed to locate the claims:
 
 ## 6. Delivery and storage
 
-With sufficient evidence and rendering tools, deliver one structural PNG chart and a matching concise Markdown report. In the final reply, show the PNG using its absolute local path and include a link to the actual file. Open it first to check Chinese/English text, superscripts/primes, alignment, and clipping; a tool's success message alone is not delivery. Without rendering tools, use a text chart/table with the same fields and state that no image was generated.
+With sufficient evidence and rendering tools, deliver one structural PNG chart and a matching concise Markdown report. In the final reply, show the PNG using its absolute local path and include a link to the actual file. Open the final PNG once to check Chinese/English text, superscripts/primes, alignment, and clipping; recheck only after a material correction, following the main skill's screenshot and image budget. A tool's success message alone is not delivery. Without rendering tools, use a text chart/table with the same fields and state that no image was generated.
 
 Save analysis artifacts, crops, and temporary files **outside the source/current project** by default. Prefer the session's agreed destination or a platform output folder that lies outside the project; otherwise a user-document folder such as `CodexOutputs/musical-form-analysis/` is suitable. Do not hard-code a user's name or absolute path. Honor an explicit destination. This rule concerns analysis artifacts and does not prevent authorized edits to the skill's source files.
 
